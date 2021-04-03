@@ -6,7 +6,9 @@ app.secret_key = "dBCBAJBJCBHJBHBHJE*&^CHSAVCSACBADABCHJBJAH"
 @app.route("/")
 def index():
     return render_template("index.html")
-
+@app.route("/signin")
+def register():
+    return render_template("signin.html")
 if __name__=="__main__":
-    mongo_setup.global_init() 
+    # mongo_setup.global_init() 
     app.run(debug=True)
