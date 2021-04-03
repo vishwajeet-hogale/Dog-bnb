@@ -15,6 +15,8 @@ def login():
         if sc.find_account_by_username_password(username,password):
             print("Logged in")
             return "hello"
+        else:
+            return redirect(url_for("register"))
     return   render_template("login.html")
 @app.route("/signin",methods=["POST","GET"])
 def register():
