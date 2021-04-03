@@ -1,7 +1,7 @@
 import mongoengine
 import datetime
 from bookings import Booking
-class doghouse:
+class doghouse(mongoengine.Document):
     registered_date = mongoengine.DateTimeField(default=datetime.datetime.now)
     name = mongoengine.StringField(required = True) 
     price = mongoengine.FloatField(required = True)

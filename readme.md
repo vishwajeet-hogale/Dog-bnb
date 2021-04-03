@@ -9,3 +9,4 @@
         * Added connection using mongoengine which is a ODM (Just liek ORM)
         * Added meta attribute to owner,dog and doghouse classes.
           Basically used to add the collections to our database
+        * Using mongoengine to supply attributes to all the classes which are collections in mongodb
