@@ -1,11 +1,11 @@
 import pymongo 
-from Flask import Flask,request,render_template,flash
+from flask import Flask,render_template,redirect,url_for,flash,request
 
 app = Flask(__name__)
-
+app.secret_key = "dBCBAJBJCBHJBHBHJE*&^CHSAVCSACBADABCHJBJAH"
 @app.route("/")
 def index():
-    return "Hello"
+    return render_template("index.html")
 
 if __name__=="__main__":
     app.run(debug=True)
