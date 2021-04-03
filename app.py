@@ -8,5 +8,5 @@ def index():
     return render_template("index.html")
 
 if __name__=="__main__":
-    mongo_setup.global_init()
+    mongo_setup.global_init() 
     app.run(debug=True)
