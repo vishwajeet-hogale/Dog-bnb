@@ -13,6 +13,7 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
         if sc.find_account_by_username_password(username,password):
+            session["username"] = username  # use this session data for your account
             print("Logged in")
             return "hello"
         else:
