@@ -6,4 +6,4 @@ class Booking(mongoengine.EmbeddedDocument):
     check_in_date = mongoengine.DateTimeField(required = True)
     check_out_date = mongoengine.DateTimeField(required = True)
     review = mongoengine.StringField()
-    rating = mongoengine.IntField()
+    rating = mongoengine.IntField(default = 0)
