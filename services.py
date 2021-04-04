@@ -21,7 +21,7 @@ def find_account_by_username_password(username,password) -> Owner:
 def create_doghouse(dit:dict) -> doghouse:
     dh = doghouse()
     dh.email = dit["email"]
-    dh.dogname = dit["dogname"]
+    # dh.dogname = dit["dogname"]
     dh.price = float(dit["price"])
     dh.square_meters = float(dit["meters"])
     if dit["has_toys"] == "Yes":
@@ -39,7 +39,7 @@ def create_doghouse(dit:dict) -> doghouse:
     
     dh.save()
     return dh
-  
+
 def save_doghouse_user(sess,dh)->Owner:
     a = find_account_by_username(sess)
     a.doghouse_ids.append(dh.id)

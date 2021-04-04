@@ -65,6 +65,12 @@ def register_doghouse():
         return "Thanks for registering your doghouse! We will soon make sure that you get your bookings"
     return render_template("register_doghouse.html")
 
+
+@app.route("/available_doghouses")
+def available_doghouses():
+    
+
+
 if __name__=="__main__":
     mongo_setup.global_init() 
     app.run(debug=True)

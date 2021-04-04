@@ -3,7 +3,7 @@ import datetime
 from bookings import Booking
 class doghouse(mongoengine.Document):
     registered_date = mongoengine.DateTimeField(default=datetime.datetime.now)
-    dogname = mongoengine.StringField(required = True) 
+    # dogname = mongoengine.StringField(required = True) 
     email = mongoengine.StringField(required = True) 
     price = mongoengine.FloatField(required = True)
     allow_dangerous_dogs = mongoengine.BooleanField(required = True)
