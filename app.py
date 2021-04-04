@@ -14,6 +14,7 @@ def before_request():
     g.username = None
     if 'username' in session:
         g.username = session["username"] 
+
 @app.route("/login",methods = ["POST","GET"])
 def login():
     if request.method == "POST":
@@ -29,7 +30,7 @@ def login():
 @app.route("/signout")
 def signout():
     session.pop("username",None)
-    return render_template("login.html")
+    return redirect(url_for("index"))
 @app.route("/dashboard")
 def dashboard():
     if g.username:
