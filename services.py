@@ -11,4 +11,5 @@ def find_account_by_email(email) -> Owner:
     return owner
 def find_account_by_username_password(username,password) -> Owner:
     owner = Owner.objects(name=username,password = password).first()
+    print(owner)
     return owner

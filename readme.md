@@ -11,4 +11,7 @@
           Basically used to add the collections to our database
         * Using mongoengine to supply attributes to all the classes which are collections in mongodb
     2) Creating users 
-        * 
+        * Registration of users (Signup) 
+    3) Login functionality 
+        * Using flask session
+    

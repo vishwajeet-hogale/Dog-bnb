@@ -1,5 +1,5 @@
 import pymongo 
-from flask import Flask,render_template,redirect,url_for,flash,request,session
+from flask import Flask,render_template,redirect,url_for,flash,request,session,g
 import mongo_setup 
 app = Flask(__name__)
 app.secret_key = "dBCBAJBJCBHJBHBHJE*&^CHSAVCSACBADABCHJBJAH"
@@ -7,6 +7,13 @@ import services as sc
 @app.route("/")
 def index():
     return render_template("login.html")
+
+
+@app.before_request
+def before_request():
+    g.username = None
+    if 'username' in session:
+        g.username = session["username"] 
 @app.route("/login",methods = ["POST","GET"])
 def login():
     if request.method == "POST":
@@ -15,10 +22,19 @@ def login():
         if sc.find_account_by_username_password(username,password):
             session["username"] = username  # use this session data for your account
             print("Logged in")
-            return "hello"
+            return redirect(url_for("dashboard"))
         else:
             return redirect(url_for("register"))
     return   render_template("login.html")
+@app.route("/signout")
+def signout():
+    session.pop("username",None)
+    return render_template("login.html")
+@app.route("/dashboard")
+def dashboard():
+    if g.username:
+        return render_template("dashboard.html",user = session["username"])
+    return redirect(url_for("login"))
 @app.route("/signin",methods=["POST","GET"])
 def register():
     if request.method == "POST":
