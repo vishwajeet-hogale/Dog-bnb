@@ -51,6 +51,20 @@ def register():
         print("Account Created!!!!")
         return redirect(url_for("login"))
     return render_template("signin.html")
+
+@app.route("/register_doghouse",methods=["POST","GET"])
+def register_doghouse():
+    if request.method == "POST":
+        inputData = dict(request.form)
+        print(inputData)
+        dh = sc.create_doghouse(inputData)
+        a = sc.save_doghouse_user(str(session["username"]),dh)
+        print(a.doghouse_ids)
+        print(sc.find_doghouses_for_user(a))
+        print("Dog house created!")
+        return "Thanks for registering your doghouse! We will soon make sure that you get your bookings"
+    return render_template("register_doghouse.html")
+
 if __name__=="__main__":
     mongo_setup.global_init() 
     app.run(debug=True)
