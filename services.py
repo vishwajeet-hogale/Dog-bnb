@@ -49,5 +49,7 @@ def find_doghouses_for_user(owner:Owner) -> list[doghouse]:
     query = doghouse.objects(id__in = owner.doghouse_ids) 
     dhs = list(query)
     return dhs
+# def find_doghouses_for_user_session(sesh:str) -> list[doghouse]:
+#     query = doghouse.objects(name=)
 
 

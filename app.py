@@ -66,9 +66,10 @@ def register_doghouse():
     return render_template("register_doghouse.html")
 
 
-@app.route("/available_doghouses")
-def available_doghouses():
-    
+# @app.route("/available_doghouses")
+# def available_doghouses():
+#     doghouses = sc.find_doghouses_for_user_session(session["username"])
+
 
 
 if __name__=="__main__":
