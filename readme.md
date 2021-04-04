@@ -14,4 +14,7 @@
         * Registration of users (Signup) 
     3) Login functionality 
         * Using flask session
-    
+    4) Registration of doghouses 
+        * Every owner of a doghouse can be a host and guest of a dog
+    5) Making dog houses available on the market so that bookings can be made
+        * In process right now
