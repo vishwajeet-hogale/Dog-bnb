@@ -76,7 +76,11 @@ def book_your_doghouse_as_host():
         a = sc.find_account_by_username(session["username"])
         all_doghouses = sc.find_doghouses_for_user(a)
         dh = sc.add_available_date(all_doghouses[int(inputData["doghouse_number"])-1],date_time_obj,inputData["days"])
-    return render_template("book_your_doghouse_as_host.html")
+    try:
+        if(session["username"]):
+            return render_template("book_your_doghouse_as_host.html")
+    except:
+        return "Please Login to continue"
 
 # @app.route("/available_doghouses")
 # def available_doghouses():
