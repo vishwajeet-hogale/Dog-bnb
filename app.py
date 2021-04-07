@@ -64,7 +64,7 @@ def register_doghouse():
         print("Dog house created!")
         return "Thanks for registering your doghouse! We will soon make sure that you get your bookings"
     return render_template("register_doghouse.html")
-@app.route("/book_your_doghouse_as_host",methods=["POST","GET"])
+@app.route("/book_your_doghouse_as_host",methods=["POST","GET"]) #You can give your dog house for rent using this route
 def book_your_doghouse_as_host():
     if request.method == "POST":
         inputData = dict(request.form)
