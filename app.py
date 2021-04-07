@@ -4,18 +4,16 @@ import mongo_setup
 app = Flask(__name__)
 app.secret_key = "dBCBAJBJCBHJBHBHJE*&^CHSAVCSACBADABCHJBJAH"
 import services as sc
-@app.route("/")
+@app.route("/") #Runs the landing page which is still under construction
 def index():
     return render_template("login.html")
-
-
-@app.before_request
+@app.before_request  #The before_request decorator allows us to create a function that will run before each request.
 def before_request():
     g.username = None
     if 'username' in session:
         g.username = session["username"] 
 
-@app.route("/login",methods = ["POST","GET"])
+@app.route("/login",methods = ["POST","GET"])  #Every owner can be a user and a host. SO this ensures the login of that owner
 def login():
     if request.method == "POST":
         username = request.form["username"]
@@ -27,16 +25,16 @@ def login():
         else:
             return redirect(url_for("register"))
     return   render_template("login.html")
-@app.route("/signout")
+@app.route("/signout") #Helps you end the session i.e logs you out
 def signout():
     session.pop("username",None)
     return redirect(url_for("index"))
-@app.route("/dashboard")
+@app.route("/dashboard")  #This is the dashboard for your account (Owner)
 def dashboard():
     if g.username:
         return render_template("dashboard.html",user = session["username"])
     return redirect(url_for("login"))
-@app.route("/signin",methods=["POST","GET"])
+@app.route("/signin",methods=["POST","GET"]) #If you don't have an account this route helps you sign up into dog-bnb
 def register():
     if request.method == "POST":
         name = request.form["username"]
@@ -52,7 +50,7 @@ def register():
         return redirect(url_for("login"))
     return render_template("signin.html")
 
-@app.route("/register_doghouse",methods=["POST","GET"])
+@app.route("/register_doghouse",methods=["POST","GET"]) #Any owner can register his doghouse here
 def register_doghouse():
     if request.method == "POST":
         inputData = dict(request.form)
