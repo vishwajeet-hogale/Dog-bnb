@@ -1,6 +1,7 @@
 import pymongo 
 from flask import Flask,render_template,redirect,url_for,flash,request,session,g
 import mongo_setup 
+import datetime
 app = Flask(__name__)
 app.secret_key = "dBCBAJBJCBHJBHBHJE*&^CHSAVCSACBADABCHJBJAH"
 import services as sc
@@ -19,7 +20,8 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
         if sc.find_account_by_username_password(username,password):
-            session["username"] = username  # use this session data for your account
+            session["username"] = username 
+             # use this session data for your account
             print("Logged in")
             return redirect(url_for("dashboard"))
         else:
@@ -62,7 +64,19 @@ def register_doghouse():
         print("Dog house created!")
         return "Thanks for registering your doghouse! We will soon make sure that you get your bookings"
     return render_template("register_doghouse.html")
-
+@app.route("/book_your_doghouse_as_host",methods=["POST","GET"])
+def book_your_doghouse_as_host():
+    if request.method == "POST":
+        inputData = dict(request.form)
+        date_in = inputData["start_date"] # replace this string with whatever method or function collects your data
+        date_processing = date_in.replace('T', '-').replace(':', '-').split('-')
+        date_processing = [int(v) for v in date_processing]
+        date_time_obj = datetime.datetime(*date_processing)
+        print(date_time_obj) 
+        a = sc.find_account_by_username(session["username"])
+        all_doghouses = sc.find_doghouses_for_user(a)
+        dh = sc.add_available_date(all_doghouses[int(inputData["doghouse_number"])-1],date_time_obj,inputData["days"])
+    return render_template("book_your_doghouse_as_host.html")
 
 # @app.route("/available_doghouses")
 # def available_doghouses():

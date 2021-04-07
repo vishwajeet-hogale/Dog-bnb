@@ -1,5 +1,7 @@
 from owners import Owner
 from doghouse import doghouse
+from bookings import Booking
+import datetime
 def create_account(name:str,email:str,password : str) -> Owner:
     owner = Owner()
     owner.name = name
@@ -52,4 +54,16 @@ def find_doghouses_for_user(owner:Owner) -> list[doghouse]:
 # def find_doghouses_for_user_session(sesh:str) -> list[doghouse]:
 #     query = doghouse.objects(name=)
 
+def find_doghouses_for_user(owner:Owner)->list[doghouse]:
+    query = doghouse.objects(id__in = owner.doghouse_ids)
+    doghouses = list(query)
+    return doghouses
 
+def add_available_date(selected_doghouse:doghouse,start_date:datetime.datetime,days:str)-> doghouse:
+    booking = Booking()
+    booking.check_in_date = start_date
+    booking.check_out_date = start_date + datetime.timedelta(days=int(days))
+    doghous = doghouse.objects(id = selected_doghouse.id).first()
+    doghous.booking_list.append(booking)
+    doghous.save()
+    return doghouse
