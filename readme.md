@@ -24,3 +24,6 @@
         - All the doghouses that are available is showed to a user 
         - A booking can be made accordingly according to the user's preference 
         - This part is under construction
+## Steps to run this after clonning the repo 
+   * pip install -r requirements.txt
+   * python app.py 
