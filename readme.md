@@ -4,7 +4,7 @@
     * Flask - Python Framework
     * Mongo DB - MongoEngine
 
-## Steps involved to make this are as follows : 
+## Functionalities involved to make this are as follows : 
     1) Register the connection : 
         - Added connection using mongoengine which is a ODM (Just liek ORM)
         - Added meta attribute to owner,dog and doghouse classes.
