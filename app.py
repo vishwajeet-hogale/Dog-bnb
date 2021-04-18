@@ -84,11 +84,12 @@ def book_your_doghouse_as_host():
 @app.route("/add_dog",methods=["POST","GET"])
 def add_dog():
     if request.method == "POST":
-        inputData = dict(inputData)
-        
-        dog = sc.add_dog(str(session["username"]),name=inputData["name"],age=int(inputData["age"]),species=inputData["species"],is_dangerous=inputData["is_dangerous"])
-        return Response(status = 200)
-    
+        inputData = dict(request.form)
+        print(inputData)
+        dog = sc.add_dog(str(session["username"]),name=inputData["name"],age=int(inputData["age"]),species=inputData["species"],is_dangerous=str(inputData["allow_dangerous_dogs"]))
+        print(sc.get_all_dogs_for_user(str(session["username"])))
+        return render_template("dashboard.html")
+    return render_template("add_dog.html")
 # @app.route("/available_doghouses")
 # def available_doghouses():
 #     doghouses = sc.find_doghouses_for_user_session(session["username"])

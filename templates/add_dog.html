@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="card card-body my-3" style="opacity: 0.9;">
+        
+    <form action="/add_dog" method="POST">
+      <!-- <div class="form-group">
+        <input class="form-control" type = "text" name="dogname" placeholder="Dog name">
+      </div> -->
+      <div class="form-group">
+        <input class="form-control" type = "text" name="name" placeholder="Enter your Dog's name">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type = "number" name="age" placeholder="Enter you dog's age">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type = "text" name="species" placeholder="What specie is it?">
+      </div>
+      <div class="form-group">
+        <label class="form-group">Are dangerous dogs allowed?</label>
+        <input  type = "radio" id = "True" name="is_dangerous" value="True">
+        <label class="form-group" for="True">Yes</label>
+        <input  type = "radio" id = "False" name="is_dangerous" value="False">
+        <label class="form-group" for="False">No</label>
+      </div>
+      
+      
+      
+      
+      <button class="btn btn-primary btn-block">
+       Add my dog
+      </button>
+    </form>
+</div>
+
+
+{% endblock %}

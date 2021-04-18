@@ -69,20 +69,25 @@ def add_available_date(selected_doghouse:doghouse,start_date:datetime.datetime,d
     doghous.save()
     return doghouse
 
-def add_dog(username:str,name:str,age:int,is_dangerous:bool,species:str)->Dogs:
+def add_dog(username:str,name:str,age:int,is_dangerous:str,species:str)->Dogs:
     dog = Dogs()
     dog.name = name
     dog.Age = age
     dog.species = species
-    dog.is_dangerous = is_dangerous
+    if(is_dangerous == "True"):
+        dog.is_dangerous = True
+    elif(is_dangerous=="False"):
+        dog.is_dangerous = False
+    
     dog.save()
     owner = find_account_by_username(username)
     owner.dog_ids.append(dog.id)
     owner.save()
     return dog
 
-def get_all_dogs_for_user(username:str):
+def get_all_dogs_for_user(username:str)->list[Dogs]:
+
     owner = find_account_by_username(username)
-    dogs = owner.objects(id__in=owner.dog_ids).all()
-    return list(dogs)
+    
+    return list(owner.dog_ids)
 
