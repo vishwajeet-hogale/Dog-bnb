@@ -1,6 +1,7 @@
 from owners import Owner
 from doghouse import doghouse
 from bookings import Booking
+from dogs import Dogs
 import datetime
 def create_account(name:str,email:str,password : str) -> Owner:
     owner = Owner()
@@ -67,3 +68,16 @@ def add_available_date(selected_doghouse:doghouse,start_date:datetime.datetime,d
     doghous.booking_list.append(booking)
     doghous.save()
     return doghouse
+
+def add_dog(username:str,name:str,age:int,is_dangerous:bool,species:str)->Dogs:
+    dog = Dogs()
+    dog.name = name
+    dog.Age = age
+    dog.species = species
+    dog.is_dangerous = is_dangerous
+    dog.save()
+    owner = find_account_by_username(username)
+    owner.dog_ids.append(dog.id)
+    owner.save()
+    return dog
+

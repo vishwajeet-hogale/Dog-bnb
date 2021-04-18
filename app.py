@@ -1,5 +1,5 @@
 import pymongo 
-from flask import Flask,render_template,redirect,url_for,flash,request,session,g
+from flask import Flask,render_template,redirect,url_for,flash,request,session,g,Response
 import mongo_setup 
 import datetime
 app = Flask(__name__)
@@ -81,7 +81,14 @@ def book_your_doghouse_as_host():
             return render_template("book_your_doghouse_as_host.html")
     except:
         return "Please Login to continue"
-
+@app.route("/add_dog",methods=["POST","GET"])
+def add_dog():
+    if request.method == "POST":
+        inputData = dict(inputData)
+        
+        dog = sc.add_dog(str(session["username"]),name=inputData["name"],age=int(inputData["age"]),species=inputData["species"],is_dangerous=inputData["is_dangerous"])
+        return Response(status = 200)
+    
 # @app.route("/available_doghouses")
 # def available_doghouses():
 #     doghouses = sc.find_doghouses_for_user_session(session["username"])
