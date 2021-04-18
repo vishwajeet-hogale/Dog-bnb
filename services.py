@@ -81,7 +81,7 @@ def add_dog(username:str,name:str,age:int,is_dangerous:bool,species:str)->Dogs:
     owner.save()
     return dog
 
-def get_all_dogs_for_user(username:str)->list(Dogs):
+def get_all_dogs_for_user(username:str):
     owner = find_account_by_username(username)
     dogs = owner.objects(id__in=owner.dog_ids).all()
     return list(dogs)
