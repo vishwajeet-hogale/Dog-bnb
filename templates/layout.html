@@ -6,15 +6,22 @@
     <!-- BOOSTRAP 4 -->
     <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
     <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+    <style>
+      body{
+          
+          background-image: url('static/images/dogs.jpg');
+      }
+      </style>
   </head>
-  <body>
+  <body >
 
     <!-- NAVIGATION  -->
     <nav class="navbar navbar-dark bg-dark">
       <a class="navbar-brand" href="/">Dog BNB</a>
+      
     </nav>
-
-    <div class="container pt-4">
+    
+    <div class="container pt-4" id="back" >
       {% block body %}
       {% endblock %}
     </div>

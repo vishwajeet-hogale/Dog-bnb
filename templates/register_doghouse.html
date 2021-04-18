@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block body %}
-<div class="card card-body my-3">
+<div class="card card-body my-3" style="opacity: 0.9;">
         
     <form action="/register_doghouse" method="POST">
       <!-- <div class="form-group">
@@ -17,23 +17,23 @@
       </div>
       <div class="form-group">
         <label class="form-group">Are dangerous dogs allowed?</label>
-        <input class="form-control" type = "radio" id = "Yes" name="allow_dangerous_dogs" value="Yes">
+        <input  type = "radio" id = "Yes" name="allow_dangerous_dogs" value="Yes">
         <label class="form-group" for="Yes">Yes</label>
-        <input class="form-control" type = "radio" id = "No" name="allow_dangerous_dogs" value="No">
-        <label class="form-group" for="No">Yes</label>
+        <input  type = "radio" id = "No" name="allow_dangerous_dogs" value="No">
+        <label class="form-group" for="No">No</label>
       </div>
       <div class="form-group">
         <label class="form-group">Are toys there to play with?</label>
-        <input class="form-control" type = "radio" id = "Yes" name="has_toys" value="Yes">
+        <input type = "radio" id = "Yes" name="has_toys" value="Yes">
         <label class="form-group" for="Yes">Yes</label>
-        <input class="form-control" type = "radio" id = "No" name="has_toys" value="No">
-        <label class="form-group" for="No">Yes</label>
+        <input type = "radio" id = "No" name="has_toys" value="No">
+        <label class="form-group" for="No">No</label>
       </div>
       <div class="form-group">
         <label class="form-group">Is it carpeted?</label>
-        <input class="form-control" type = "radio" id = "Yes" name="is_carpeted" value="Yes">
+        <input  type = "radio" id = "Yes" name="is_carpeted" value="Yes">
         <label class="form-group" for="Yes">Yes</label>
-        <input class="form-control" type = "radio" id = "No" name="is_carpeted" value="No">
+        <input  type = "radio" id = "No" name="is_carpeted" value="No">
         <label class="form-group" for="No">No</label>
       </div>
       

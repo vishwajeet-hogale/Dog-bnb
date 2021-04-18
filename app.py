@@ -7,7 +7,7 @@ app.secret_key = "dBCBAJBJCBHJBHBHJE*&^CHSAVCSACBADABCHJBJAH"
 import services as sc
 @app.route("/") #Runs the landing page which is still under construction
 def index():
-    return render_template("login.html")
+    return render_template("home.html")
 @app.before_request  #The before_request decorator allows us to create a function that will run before each request.
 def before_request():
     g.username = None

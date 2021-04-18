@@ -1,16 +1,16 @@
 {% extends "layout.html" %}
 {% block body %}
-<div class="card card-body">
+<div class="card card-body" style="opacity: 0.8;">
         
     <form action="/signin" method="POST">
       <div class="form-group">
         <input class="form-control" type = "text" name="username" placeholder="Username">
       </div>
       <div class="form-group">
-        <input type="email" class="form-control" name="email" placeholder="email"/>
+        <input type="email" class="form-control" name="email" placeholder="Email"/>
       </div>
       <div class="form-group">
-        <input type="password" class="form-control" name="password" placeholder="Conforim Password"/>
+        <input type="password" class="form-control" name="password" placeholder="Confirm Password"/>
       </div>
       
       
