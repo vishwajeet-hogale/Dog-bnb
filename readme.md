@@ -27,7 +27,7 @@
     - Every user can add his/her dog onto the platform 
     - Can view all the dogs on the platform as well
 8) Booking a doghouse as a guest 
-    -Work in progress
+    - Work in progress
 ## Steps to run this after clonning the repo 
 * pip install -r requirements.txt
 * python app.py 
